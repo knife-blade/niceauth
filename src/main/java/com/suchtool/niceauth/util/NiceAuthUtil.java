@@ -3,13 +3,17 @@ package com.suchtool.niceauth.util;
 import com.suchtool.niceauth.annotation.AuthIgnore;
 import com.suchtool.niceauth.annotation.RequirePermission;
 import com.suchtool.niceauth.constant.AuthType;
+import com.suchtool.niceauth.constant.Logic;
 import com.suchtool.niceauth.property.NiceAuthProperty;
+import org.springframework.util.AntPathMatcher;
 
 import java.lang.reflect.Method;
 import java.util.Collection;
 
 public class NiceAuthUtil {
     private NiceAuthProperty niceAuthProperty;
+
+    private final AntPathMatcher pathMatcher = new AntPathMatcher(":");
 
     public NiceAuthUtil(NiceAuthProperty niceAuthProperty) {
         this.niceAuthProperty = niceAuthProperty;
@@ -50,9 +54,45 @@ public class NiceAuthUtil {
         boolean requirePermissionPresent = method.isAnnotationPresent(RequirePermission.class);
         if (!requirePermissionPresent) {
             return false;
+        } else {
+            RequirePermission requirePermission = method.getAnnotation(RequirePermission.class);
         }
 
-        return true;
+        return false;
+    }
+
+    private boolean permissionCheckSuccess(RequirePermission requirePermission,
+                                           Collection<String> permissions) {
+        String[] values = requirePermission.value();
+        if (Logic.OR.equals(requirePermission.logic())) {
+            for (String value : values) {
+                if (permissionCheckSuccess(value, permissions)) {
+                    return true;
+                }
+            }
+            return false;
+        } else if (Logic.AND.equals(requirePermission.logic())) {
+            for (String value : values) {
+                if (!permissionCheckSuccess(value, permissions)) {
+                    return false;
+                }
+            }
+
+            return true;
+        } else {
+            throw new RuntimeException("不支持此逻辑运算：" + requirePermission.logic());
+        }
+    }
+
+    private boolean permissionCheckSuccess(String permissionOfAnnotation,
+                                           Collection<String> permissions) {
+        for (String permission : permissions) {
+            if (pathMatcher.match(permission, permissionOfAnnotation)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private boolean checkRequired(Method method,
