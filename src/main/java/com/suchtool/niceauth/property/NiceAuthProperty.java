@@ -5,12 +5,22 @@ import lombok.Data;
 @Data
 public class NiceAuthProperty {
     /**
-     * 默认校验认证权限（没有注解时是否校验）
+     * 默认校验权限（没有注解时是否校验）
      */
-    private Boolean defaultCheckAuthentication;
+    private Boolean defaultCheckAuth = true;
 
     /**
-     * 默认校验功能权限（没有注解时是否校验）
+     * 默认校验认证权限（没有注解时是否校验）
      */
-    private Boolean defaultCheckPermission;
+    private Boolean defaultCheckAuthentication = true;
+
+    /**
+     * 默认校验资源权限（没有注解时是否校验）
+     */
+    private Boolean defaultCheckPermission = true;
+
+    /**
+     * 默认校验角色权限（没有注解时是否校验）
+     */
+    private Boolean defaultCheckRole = true;
 }

@@ -7,9 +7,9 @@ import java.lang.annotation.*;
 @Documented
 public @interface AuthIgnore {
     /**
-     * 是否忽略所有权限校验。包括：Authentication、Permission、其他。
+     * 是否忽略权限校验。包括：Authentication、Permission、Role、其他。
      */
-    boolean ignoreAll() default false;
+    boolean ignoreAuth() default false;
 
     /**
      * 是否忽略认证校验
@@ -20,4 +20,9 @@ public @interface AuthIgnore {
      * 是否忽略功能权限校验
      */
     boolean ignorePermission() default false;
+
+    /**
+     * 是否忽略角色权限校验
+     */
+    boolean ignoreRole() default false;
 }
