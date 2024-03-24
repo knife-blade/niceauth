@@ -10,7 +10,7 @@ public class NiceAuthProperty {
     private Boolean defaultCheckAuthentication;
 
     /**
-     * 默认校验授权权限（没有注解时是否校验）
+     * 默认校验功能权限（没有注解时是否校验）
      */
-    private Boolean defaultCheckAuthorization;
+    private Boolean defaultCheckPermission;
 }
