@@ -11,15 +11,15 @@ niceauth：好用的Java权限工具，方便、快捷、开箱即用。
 
 | 方法  | 说明  |  备注 |
 | :------------ | :------------ | :------------ |
-| NiceAuthUtil##authCheckRequired(Method)  | 是否校验权限  | 权限总开关  |
-| NiceAuthUtil##authcCheckRequired(Method)  | 是否校验认证权限（Authentication）  |  略 |
-| NiceAuthUtil##permissionCheckRequired(Method)  | 是否校验资源权限  | 略  |
-| NiceAuthUtil##roleCheckRequired(Method)  | 是否校验角色权限  | 略  |
+| authCheckRequired(Method)  | 是否校验权限  | 权限总开关  |
+| authcCheckRequired(Method)  | 是否校验认证权限（Authentication）  |  略 |
+| permissionCheckRequired(Method)  | 是否校验资源权限  | 略  |
+| roleCheckRequired(Method)  | 是否校验角色权限  | 略  |
 
 
 ### 2.2 资源权限校验是否通过
 
-NiceAuthUtil##permissionCheckSuccess(Method,Collection<String>)
+permissionCheckSuccess(Method,Collection<String>)
 
 **参数说明**
 
@@ -33,7 +33,7 @@ NiceAuthUtil##permissionCheckSuccess(Method,Collection<String>)
 
 ### 2.3 资源权限校验是否通过
 
-NiceAuthUtil##roleCheckSuccess(Method,Collection<String>)
+roleCheckSuccess(Method,Collection<String>)
 
 **参数说明**
 
@@ -93,14 +93,21 @@ public class OrderController {
 
 需要获得java.lang.reflect.Method，然后进行调用。
 
-例如：
+先注入NiceAuthUtil工具类
+```
+@Autowired
+private NiceAuthUtil niceAuthUtil;
+```
+
+使用
 ```
 // 可以通过拦截器、AOP等获得目标method
 Method method = null;
 // 从数据库中读取本用户的资源权限列表
 List<String> permissions = null;
+
 // 检查是否有权限
-boolean checkSuccess = NiceAuthUtil.permissionCheckSuccess(method, permissions);
+boolean checkSuccess = niceAuthUtil.permissionCheckSuccess(method, permissions);
 ```
 
 ## 4.注解

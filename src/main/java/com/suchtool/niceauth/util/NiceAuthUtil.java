@@ -14,7 +14,7 @@ import java.util.Collection;
 public class NiceAuthUtil {
     private NiceAuthProperty niceAuthProperty;
 
-    private final AntPathMatcher pathMatcher = new AntPathMatcher(":");
+    private final AntPathMatcher PATH_MATCHER = new AntPathMatcher(":");
 
     public NiceAuthUtil(NiceAuthProperty niceAuthProperty) {
         this.niceAuthProperty = niceAuthProperty;
@@ -146,7 +146,7 @@ public class NiceAuthUtil {
     private boolean permissionCheckSuccess(String permissionOfAnnotation,
                                            Collection<String> permissions) {
         for (String permission : permissions) {
-            if (pathMatcher.match(permission, permissionOfAnnotation)) {
+            if (PATH_MATCHER.match(permission, permissionOfAnnotation)) {
                 return true;
             }
         }
@@ -180,7 +180,7 @@ public class NiceAuthUtil {
     private boolean roleCheckSuccess(String roleOfAnnotation,
                                      Collection<String> roles) {
         for (String role : roles) {
-            if (pathMatcher.match(roleOfAnnotation, role)) {
+            if (PATH_MATCHER.match(roleOfAnnotation, role)) {
                 return true;
             }
         }
