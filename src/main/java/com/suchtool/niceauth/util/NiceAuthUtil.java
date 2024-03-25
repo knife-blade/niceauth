@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 
 public class NiceAuthUtil {
-    private NiceAuthProperty niceAuthProperty;
+    private final NiceAuthProperty niceAuthProperty;
 
     private final AntPathMatcher PATH_MATCHER = new AntPathMatcher(":");
 
