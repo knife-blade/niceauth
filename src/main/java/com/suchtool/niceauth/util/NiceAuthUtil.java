@@ -190,6 +190,10 @@ public class NiceAuthUtil {
 
     private boolean checkRequired(Method method,
                                   AuthType authType) {
+        if (!niceAuthProperty.getEnableAuth()) {
+            return false;
+        }
+
         Class<?> declaringClass = method.getDeclaringClass();
 
         boolean methodAnnotationPresent = method.isAnnotationPresent(AuthIgnore.class);

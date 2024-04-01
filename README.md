@@ -135,6 +135,7 @@ boolean checkSuccess = niceAuthUtil.permissionCheckSuccess(method, permissions);
 
 | 配置项  | 含义  |  默认值 |
 | :------------ | :------------ | :------------ |
+|  suchtool.niceauth.enable-auth | 启用权限 | true  |
 |  suchtool.niceauth.default-check-auth | 默认校验权限（没有注解时是否校验）  | true  |
 |  suchtool.niceauth.default-check-authentication | 默认校验权限默认校验认证权限（没有注解时是否校验）  | true  |
 |  suchtool.niceauth.default-check-permission | 默认校验资源权限（没有注解时是否校验）  | true  |

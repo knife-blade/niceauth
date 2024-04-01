@@ -5,6 +5,11 @@ import lombok.Data;
 @Data
 public class NiceAuthProperty {
     /**
+     * 启用权限
+     */
+    private Boolean enableAuth = true;
+
+    /**
      * 默认校验权限（没有注解时是否校验）
      */
     private Boolean defaultCheckAuth = true;
