@@ -11,12 +11,12 @@ niceauth：抽取注解校验工具，配置及使用很精简，无需配置类
 通过注解的方式校验权限。
 ### 2.1 是否校验权限
 
-| 方法  | 说明  |  备注 |
-| :------------ | :------------ | :------------ |
-| authCheckRequired(Method)  | 是否校验权限  | 权限总开关  |
-| authcCheckRequired(Method)  | 是否校验认证权限（Authentication）  |  略 |
-| permissionCheckRequired(Method)  | 是否校验资源权限  | 略  |
-| roleCheckRequired(Method)  | 是否校验角色权限  | 略  |
+| 方法                                | 说明  |  备注 |
+|:------------------------------------| :------------ | :------------ |
+| authCheckRequired(Method)           | 是否校验权限  | 权限总开关  |
+| authenticationCheckRequired(Method) | 是否校验认证权限（Authentication）  |  略 |
+| permissionCheckRequired(Method)     | 是否校验资源权限  | 略  |
+| roleCheckRequired(Method)           | 是否校验角色权限  | 略  |
 
 
 ### 2.2 资源权限校验是否通过

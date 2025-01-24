@@ -21,10 +21,12 @@ public class NiceAuthUtil {
     }
 
     /**
-     * 是否需要校验Authentication
+     * 是否需要校验权限
      *
      * @param method Controller方法
-     * @return 是否需要校验
+     * @return
+     *      是：需要校验任意权限（Authentication或Permission或Role等）
+     *      否：不需要校验任何权限
      */
     public boolean authCheckRequired(Method method) {
         return checkRequired(method, AuthType.AUTH);
@@ -36,7 +38,7 @@ public class NiceAuthUtil {
      * @param method Controller方法
      * @return 是否需要校验
      */
-    public boolean authcCheckRequired(Method method) {
+    public boolean authenticationCheckRequired(Method method) {
         return checkRequired(method, AuthType.AUTHENTICATION);
     }
 
