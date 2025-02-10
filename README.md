@@ -33,7 +33,7 @@ permissionCheckSuccess(Method,Collection<String>)
 根据Method对应方法或类上的@RequirePermission注解上的值，遍历Collection<String>，判断是否有权限。详细如下：
 先判断方法，如果有@RequirePermission，则用它判断是否有资源权限；如果方法上没有@RequirePermission，则取类上的@RequirePermission，用它判断是否有资源权限。
 
-### 2.3 资源权限校验是否通过
+### 2.3 角色权限校验是否通过
 
 roleCheckSuccess(Method,Collection<String>)
 
